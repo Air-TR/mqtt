@@ -5,11 +5,13 @@ server:
 
 spring:
   mqtt:
-    url: tcp://192.168.3.10:1883 # ?????????
+    url: tcp://192.168.3.10:1883
     username: user
-    password: 666666
-    client:
-      id: ${random.value}
-    default: # MQTT ?????????????????????
-      topic: topic # ?????????
-    completionTimeout: 3000 # ????
+    password: 123456
+#    client:
+#      id: ${random.value} # 要同时启动 Provider 和 Consumer，就要给 Provider 和 Consumer 设置不同的 client-id
+    providerClientId: pan_provider
+    consumerClientId: pan_consumer
+    default:
+      topic: topic1
+    completionTimeout: 3000
