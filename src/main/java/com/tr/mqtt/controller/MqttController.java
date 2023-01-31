@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/mqtt")
 public class MqttController {
 
     @Value("${spring.mqtt.consumerClientId}")
