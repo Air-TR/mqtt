@@ -67,9 +67,11 @@ public class MqttConsumerConfig {
             client.connect(options);
             // 订阅主题
             // 消息等级（与 topics[] 一一对应），服务端将按照指定等级给订阅了主题的客户端推送消息
-            int[] qos = {0, 1, 2};
+            int[] qos = {0};
+//            int[] qos = {0, 1, 2};
             // 主题（与 qos[] 一一对应）
-            String[] topics = {defaultTopic, "topic2", "topic3"};
+            String[] topics = {"QPS"};
+//            String[] topics = {defaultTopic, "topic2", "topic3"};
             // 订阅主题
             client.subscribe(topics, qos);
         } catch (MqttException e) {
