@@ -1,5 +1,6 @@
 package com.tr.mqtt.controller;
 
+import com.tr.mqtt.callback.MqttConsumerCallBack;
 import com.tr.mqtt.config.MqttConsumerConfig;
 import com.tr.mqtt.config.MqttProviderConfig;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,11 @@ public class MqttController {
 
     @Resource
     private MqttConsumerConfig consumerClient;
+
+    @GetMapping("/index")
+    public int index() {
+        return MqttConsumerCallBack.index;
+    }
 
     @GetMapping("/sendMsg")
     public void sendMessage() {
