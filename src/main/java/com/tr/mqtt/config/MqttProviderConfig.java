@@ -22,9 +22,6 @@ public class MqttProviderConfig {
     @Value("${spring.mqtt.providerClientId}")
     private String providerClientId;
 
-    @Value("${spring.mqtt.default.topic}")
-    private String defaultTopic;
-
     /**
      * 客户端对象
      */
@@ -56,8 +53,8 @@ public class MqttProviderConfig {
             options.setPassword(password.toCharArray());
             // 设置超时时间，单位为秒
             options.setConnectionTimeout(100);
-            // 设置心跳时间，单位为秒，表示服务器每隔 1.5 * 20 秒的时间向客户端发送心跳判断客户端是否在线
-            options.setKeepAliveInterval(20);
+            // 设置心跳时间，单位为秒，表示服务器每 30 秒向客户端发送心跳判断客户端是否在线
+            options.setKeepAliveInterval(30);
             // 设置遗嘱消息的话题，若客户端和服务器之间的连接意外断开，服务器将发布客户端的遗嘱信息
             options.setWill("willTopic", (providerClientId + "与服务器断开连接").getBytes(), 0, false);
             // 设置回调

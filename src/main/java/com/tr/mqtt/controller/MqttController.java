@@ -24,7 +24,9 @@ public class MqttController {
 
     @GetMapping("/index")
     public int index() {
-        return MqttConsumerCallBack.index;
+        int num = MqttConsumerCallBack.index;
+        MqttConsumerCallBack.index = 0;
+        return num;
     }
 
     @GetMapping("/sendMsg")

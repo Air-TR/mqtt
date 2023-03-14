@@ -12,6 +12,19 @@ spring:
 #      id: ${random.value} # 要同时启动 Provider 和 Consumer，就要给 Provider 和 Consumer 设置不同的 client-id
     providerClientId: pan_provider
     consumerClientId: pan_consumer
-    default:
-      topic: topic1
+    topic: topic0,topic1,topic2,QPS
+    qos: 0,1,2,0 # 注意：与上面的 topic 一一对应，否则启动失败
     completionTimeout: 3000
+    automaticReconnect: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.159:3307/mqtt?serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
